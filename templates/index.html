@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Car Price Predictor AI</title>
+
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -11,21 +12,19 @@
 
 <div class="container">
 
-<h1>🚗 Car Price Predictor AI</h1>
-<p>Predict accurate car price using ML model</p>
+<h1>🚗 AI Car Price Predictor</h1>
+<p>Smart ML prediction system</p>
 
-<form action="/predict" method="POST" onsubmit="showLoader()">
+<form action="/predict" method="POST">
 
-<!-- Company Name -->
-<input type="text" name="car_name" placeholder="Company Name (Make)" required>
+<!-- Company -->
+<input type="text" name="car_name" placeholder="Company Name" required>
 
 <!-- Model -->
 <input type="text" name="model" placeholder="Car Model" required>
 
 <!-- Ad ID -->
-<input type="text" name="ad_id"
-placeholder="10 Digit Ad ID"
-pattern="[0-9]{10}" maxlength="10" required>
+<input type="text" name="ad_id" pattern="[0-9]{10}" maxlength="10" placeholder="10 Digit Ad ID" required>
 
 <!-- Year -->
 <select name="year" required>
@@ -35,68 +34,53 @@ pattern="[0-9]{10}" maxlength="10" required>
 {% endfor %}
 </select>
 
-<!-- KM Driven -->
-<input type="number" name="kms"
-placeholder="KM Driven (10 digit max)"
-maxlength="10" required>
+<!-- KM -->
+<input type="number" name="kms" placeholder="KM Driven" required>
 
-<!-- Fuel -->
+<!-- 🔥 FIXED FUEL -->
 <select name="fuel" required>
 <option value="">Fuel Type</option>
-<option>Petrol</option>
-<option>Diesel</option>
+<option value="Petrol">Petrol</option>
+<option value="Diesel">Diesel</option>
 </select>
+
+<input type="text" name="registration_city" placeholder="Registration City" required>
 
 <!-- Documents -->
 <select name="documents" required>
 <option value="">Documents</option>
-<option>Original</option>
-<option>Not Original</option>
+<option value="Original">Original</option>
+<option value="Not Original">Not Original</option>
 </select>
 
 <!-- Assembly -->
 <select name="assembly" required>
 <option value="">Assembly</option>
-<option>Local</option>
-<option>Imported</option>
+<option value="Local">Local</option>
+<option value="Imported">Imported</option>
 </select>
 
-<!-- Transmission -->
+<!-- 🔥 FIXED TRANSMISSION -->
 <select name="transmission" required>
 <option value="">Transmission</option>
-<option>Manual</option>
-<option>Automatic</option>
+<option value="Manual">Manual</option>
+<option value="Automatic">Automatic</option>
 </select>
 
 <!-- Condition -->
 <select name="condition" required>
 <option value="">Condition</option>
-<option>Used</option>
-<option>Not Used</option>
+<option value="Used">Used</option>
+<option value="Not Used">Not Used</option>
 </select>
 
-<!-- Seller Location -->
 <input type="text" name="seller_location" placeholder="Seller Location" required>
 
 <button type="submit">Predict Price 🚀</button>
 
 </form>
 
-<div id="loader" class="loader"></div>
-
-{% if prediction %}
-<div class="result">
-💰 Predicted Price: ₹ {{ prediction }}
 </div>
-{% endif %}
-
-</div>
-
-<script>
-function showLoader(){
-document.getElementById("loader").style.display = "block";
-}
-</script>
 
 </body>
 </html>
