@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Predictor</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🚗 Car Price Predictor</h1>
+    <p>Predict your car's market value using AI</p>
+
+    <form action="/predict" method="POST">
+
+        <input type="number" name="ad_id" placeholder="Ad ID" required>
+
+        <input type="text" name="car_name" placeholder="Car Name" required>
+
+        <input type="text" name="make" placeholder="Make" required>
+
+        <input type="text" name="model" placeholder="Model" required>
+
+        <input type="number" name="year" placeholder="Year" required>
+
+        <input type="number" name="kms" placeholder="KM Driven" required>
+
+        <input type="text" name="fuel" placeholder="Fuel Type" required>
+
+        <input type="text" name="registration_city" placeholder="Registration City" required>
+
+        <input type="text" name="documents" placeholder="Car Documents" required>
+
+        <input type="text" name="assembly" placeholder="Assembly" required>
+
+        <input type="text" name="transmission" placeholder="Transmission" required>
+
+        <input type="text" name="condition" placeholder="Condition" required>
+
+        <input type="text" name="seller_location" placeholder="Seller Location" required>
+
+        <button type="submit">Predict Price</button>
+
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        Predicted Price: ₹ {{ prediction }}
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
