@@ -72,6 +72,13 @@
 <option value="Not Used">Not Used</option>
 </select>
 
+<!-- Registration Type (NEW ADDED) -->
+<select name="registration_type" id="registration_type" onchange="toggleCity()" required>
+<option value="">Registration Type</option>
+<option value="Registered">Registered</option>
+<option value="Not Registered">Not Registered</option>
+</select>
+
 <!-- Registration City -->
 <select name="registration_city" id="registration_city" required>
 <option value="">Select Registration City</option>
@@ -101,13 +108,15 @@
 
 </div>
 
-<!-- JS Logic -->
+<!-- JS LOGIC (ONLY ADDITION) -->
 <script>
 function toggleCity(){
+
     let assembly = document.getElementById("assembly").value;
+    let regType = document.getElementById("registration_type").value;
     let city = document.getElementById("registration_city");
 
-    if(assembly === "Imported"){
+    if(assembly === "Imported" || regType === "Not Registered"){
         city.value = "";
         city.disabled = true;
         city.style.opacity = "0.5";
