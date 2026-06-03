@@ -15,7 +15,6 @@ background-size:400% 400%;
 animation: gradientBG 10s ease infinite;
 }
 
-/* Animated background */
 @keyframes gradientBG{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
@@ -34,7 +33,6 @@ text-align:center;
 animation: floatBox 4s ease-in-out infinite;
 }
 
-/* floating effect */
 @keyframes floatBox{
 0%{transform:translateY(0px);}
 50%{transform:translateY(-8px);}
@@ -45,7 +43,6 @@ h1{
 color:#ffffff;
 font-size:34px;
 margin-bottom:10px;
-text-shadow:0 0 10px rgba(255,255,255,0.3);
 }
 
 p{
@@ -66,7 +63,6 @@ border-radius:12px;
 outline:none;
 background: rgba(255,255,255,0.9);
 transition:0.3s;
-font-size:14px;
 }
 
 input:focus, select:focus{
@@ -74,7 +70,6 @@ transform:scale(1.05);
 box-shadow:0 0 15px #38bdf8;
 }
 
-/* Button glow effect */
 button{
 grid-column:span 2;
 padding:15px;
@@ -85,30 +80,11 @@ font-weight:bold;
 cursor:pointer;
 color:white;
 background: linear-gradient(90deg,#06b6d4,#3b82f6,#6366f1);
-background-size:200% auto;
 transition:0.4s;
 box-shadow:0 10px 25px rgba(59,130,246,0.4);
 }
 
 button:hover{
-background-position:right center;
 transform:scale(1.06);
 box-shadow:0 15px 35px rgba(59,130,246,0.6);
-}
-
-/* Result box */
-.result{
-margin-top:20px;
-padding:18px;
-border-radius:15px;
-font-size:20px;
-color:white;
-background: linear-gradient(135deg,#22c55e,#16a34a);
-box-shadow:0 10px 25px rgba(34,197,94,0.4);
-animation: pop 0.5s ease-in-out;
-}
-
-@keyframes pop{
-from{transform:scale(0.8);opacity:0;}
-to{transform:scale(1);opacity:1;}
 }

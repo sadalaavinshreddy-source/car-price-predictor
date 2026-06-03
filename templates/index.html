@@ -13,12 +13,12 @@
 <div class="container">
 
 <h1>🚗 AI Car Price Predictor</h1>
-<p>Smart ML prediction system</p>
+<p>Smart ML-based prediction system</p>
 
 <form action="/predict" method="POST">
 
-<!-- Company -->
-<input type="text" name="car_name" placeholder="Company Name" required>
+<!-- Company Name -->
+<input type="text" name="car_name" placeholder="Company Name (Make)" required>
 
 <!-- Model -->
 <input type="text" name="model" placeholder="Car Model" required>
@@ -34,17 +34,15 @@
 {% endfor %}
 </select>
 
-<!-- KM -->
+<!-- KM Driven -->
 <input type="number" name="kms" placeholder="KM Driven" required>
 
-<!-- 🔥 FIXED FUEL -->
+<!-- Fuel -->
 <select name="fuel" required>
 <option value="">Fuel Type</option>
 <option value="Petrol">Petrol</option>
 <option value="Diesel">Diesel</option>
 </select>
-
-<input type="text" name="registration_city" placeholder="Registration City" required>
 
 <!-- Documents -->
 <select name="documents" required>
@@ -54,13 +52,13 @@
 </select>
 
 <!-- Assembly -->
-<select name="assembly" required>
+<select name="assembly" id="assembly" onchange="toggleCity()" required>
 <option value="">Assembly</option>
 <option value="Local">Local</option>
 <option value="Imported">Imported</option>
 </select>
 
-<!-- 🔥 FIXED TRANSMISSION -->
+<!-- Transmission -->
 <select name="transmission" required>
 <option value="">Transmission</option>
 <option value="Manual">Manual</option>
@@ -74,13 +72,51 @@
 <option value="Not Used">Not Used</option>
 </select>
 
-<input type="text" name="seller_location" placeholder="Seller Location" required>
+<!-- Registration City -->
+<select name="registration_city" id="registration_city" required>
+<option value="">Select Registration City</option>
+
+<option>Hyderabad</option>
+<option>Chennai</option>
+<option>Bangalore</option>
+<option>Mumbai</option>
+<option>Delhi</option>
+<option>Kolkata</option>
+<option>Pune</option>
+<option>Ahmedabad</option>
+<option>Jaipur</option>
+<option>Lucknow</option>
+<option>Indore</option>
+<option>Surat</option>
+<option>Visakhapatnam</option>
+<option>Vijayawada</option>
+<option>Coimbatore</option>
+<option>Other</option>
+
+</select>
 
 <button type="submit">Predict Price 🚀</button>
 
 </form>
 
 </div>
+
+<!-- JS Logic -->
+<script>
+function toggleCity(){
+    let assembly = document.getElementById("assembly").value;
+    let city = document.getElementById("registration_city");
+
+    if(assembly === "Imported"){
+        city.value = "";
+        city.disabled = true;
+        city.style.opacity = "0.5";
+    } else {
+        city.disabled = false;
+        city.style.opacity = "1";
+    }
+}
+</script>
 
 </body>
 </html>
