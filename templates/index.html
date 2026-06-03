@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Car Price Predictor AI</title>
-
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -12,76 +11,90 @@
 
 <div class="container">
 
-    <h1>🚗 AI Car Price Predictor</h1>
-    <p>Enter car details to predict price</p>
+<h1>🚗 Car Price Predictor AI</h1>
+<p>Predict accurate car price using ML model</p>
 
-    <form action="/predict" method="POST" onsubmit="showLoader()">
+<form action="/predict" method="POST" onsubmit="showLoader()">
 
-        <input type="text" name="ad_id"
-               placeholder="Enter 10 Digit Ad ID"
-               pattern="[0-9]{10}" maxlength="10" required>
+<!-- Company Name -->
+<input type="text" name="car_name" placeholder="Company Name (Make)" required>
 
-        <input type="text" name="car_name" placeholder="Car Name" required>
+<!-- Model -->
+<input type="text" name="model" placeholder="Car Model" required>
 
-        <input type="text" name="model" placeholder="Model" required>
+<!-- Ad ID -->
+<input type="text" name="ad_id"
+placeholder="10 Digit Ad ID"
+pattern="[0-9]{10}" maxlength="10" required>
 
-        <!-- Year Dropdown -->
-        <select name="year" required>
-            <option value="">Select Year</option>
-            {% for y in range(2025, 1999, -1) %}
-                <option value="{{ y }}">{{ y }}</option>
-            {% endfor %}
-        </select>
+<!-- Year -->
+<select name="year" required>
+<option value="">Select Year</option>
+{% for y in range(2026, 1990, -1) %}
+<option value="{{ y }}">{{ y }}</option>
+{% endfor %}
+</select>
 
-        <input type="number" name="kms" placeholder="KM Driven" required>
+<!-- KM Driven -->
+<input type="number" name="kms"
+placeholder="KM Driven (10 digit max)"
+maxlength="10" required>
 
-        <input type="text" name="fuel" placeholder="Fuel Type" required>
+<!-- Fuel -->
+<select name="fuel" required>
+<option value="">Fuel Type</option>
+<option>Petrol</option>
+<option>Diesel</option>
+</select>
 
-        <input type="text" name="registration_city" placeholder="Registration City" required>
+<!-- Documents -->
+<select name="documents" required>
+<option value="">Documents</option>
+<option>Original</option>
+<option>Not Original</option>
+</select>
 
-        <!-- Documents -->
-        <select name="documents" required>
-            <option value="">Car Documents</option>
-            <option>Original</option>
-            <option>Not Original</option>
-        </select>
+<!-- Assembly -->
+<select name="assembly" required>
+<option value="">Assembly</option>
+<option>Local</option>
+<option>Imported</option>
+</select>
 
-        <!-- Assembly -->
-        <select name="assembly" required>
-            <option value="">Assembly</option>
-            <option>Imported</option>
-            <option>Local</option>
-        </select>
+<!-- Transmission -->
+<select name="transmission" required>
+<option value="">Transmission</option>
+<option>Manual</option>
+<option>Automatic</option>
+</select>
 
-        <input type="text" name="transmission" placeholder="Transmission" required>
+<!-- Condition -->
+<select name="condition" required>
+<option value="">Condition</option>
+<option>Used</option>
+<option>Not Used</option>
+</select>
 
-        <!-- Condition -->
-        <select name="condition" required>
-            <option value="">Condition</option>
-            <option>Used</option>
-            <option>New</option>
-        </select>
+<!-- Seller Location -->
+<input type="text" name="seller_location" placeholder="Seller Location" required>
 
-        <input type="text" name="seller_location" placeholder="Seller Location" required>
+<button type="submit">Predict Price 🚀</button>
 
-        <button type="submit">Predict Price 🚀</button>
+</form>
 
-    </form>
+<div id="loader" class="loader"></div>
 
-    <!-- Loader -->
-    <div id="loader" class="loader"></div>
-
-    {% if prediction %}
-    <div class="result">
-        💰 Predicted Price: ₹ {{ prediction }}
-    </div>
-    {% endif %}
+{% if prediction %}
+<div class="result">
+💰 Predicted Price: ₹ {{ prediction }}
+</div>
+{% endif %}
 
 </div>
 
 <script>
 function showLoader(){
-    document.getElementById("loader").style.display = "block";
+document.getElementById("loader").style.display = "block";
 }
 </script>
 
