@@ -19,34 +19,34 @@
 
 <!-- COMPANY NAME -->
 <select name="car_name" required>
-    <option value="">Company Name</option>
-    <option>Toyota</option>
-    <option>Honda</option>
-    <option>Hyundai</option>
-    <option>Maruti Suzuki</option>
-    <option>Tata</option>
-    <option>Mahindra</option>
-    <option>Ford</option>
-    <option>Chevrolet</option>
-    <option>Nissan</option>
-    <option>Renault</option>
-    <option>Kia</option>
-    <option>Volkswagen</option>
-    <option>Skoda</option>
-    <option>BMW</option>
-    <option>Mercedes-Benz</option>
-    <option>Audi</option>
-    <option>MG</option>
-    <option>Jeep</option>
-    <option>Volvo</option>
-    <option>Fiat</option>
-    <option>Land Rover</option>
-    <option>Lexus</option>
-    <option>Jaguar</option>
-    <option>Tesla</option>
-    <option>Rolls Royce</option>
-    <option>Bentley</option>
-    <option>Other</option>
+<option value="">Company Name</option>
+<option>Toyota</option>
+<option>Honda</option>
+<option>Hyundai</option>
+<option>Maruti Suzuki</option>
+<option>Tata</option>
+<option>Mahindra</option>
+<option>Ford</option>
+<option>Chevrolet</option>
+<option>Nissan</option>
+<option>Renault</option>
+<option>Kia</option>
+<option>Volkswagen</option>
+<option>Skoda</option>
+<option>BMW</option>
+<option>Mercedes-Benz</option>
+<option>Audi</option>
+<option>MG</option>
+<option>Jeep</option>
+<option>Volvo</option>
+<option>Fiat</option>
+<option>Land Rover</option>
+<option>Lexus</option>
+<option>Jaguar</option>
+<option>Tesla</option>
+<option>Rolls Royce</option>
+<option>Bentley</option>
+<option>Other</option>
 </select>
 
 <!-- MODEL -->
@@ -69,96 +69,77 @@
 <!-- FUEL -->
 <select name="fuel" required>
 <option value="">Fuel Type</option>
-<option value="Petrol">Petrol</option>
-<option value="Diesel">Diesel</option>
+<option>Petrol</option>
+<option>Diesel</option>
 </select>
 
 <!-- DOCUMENTS -->
 <select name="documents" required>
 <option value="">Car Documents</option>
-<option value="Original">Original</option>
-<option value="Not Original">Not Original</option>
+<option>Original</option>
+<option>Not Original</option>
 </select>
 
 <!-- ASSEMBLY -->
 <select name="assembly" id="assembly" onchange="toggleCity()" required>
 <option value="">Assembly</option>
-<option value="Local">Local</option>
-<option value="Imported">Imported</option>
+<option>Local</option>
+<option>Imported</option>
 </select>
 
 <!-- TRANSMISSION -->
 <select name="transmission" required>
-<option value="">Transmission</option>
-<option value="Manual">Manual</option>
-<option value="Automatic">Automatic</option>
+<option>Manual</option>
+<option>Automatic</option>
 </select>
 
 <!-- CONDITION -->
 <select name="condition" required>
-<option value="">Condition</option>
-<option value="Used">Used</option>
-<option value="Not Used">Not Used</option>
+<option>Used</option>
+<option>Not Used</option>
 </select>
 
 <!-- REGISTRATION TYPE -->
 <select name="registration_type" id="registration_type" onchange="toggleCity()" required>
-<option value="">Registration Type</option>
-<option value="Registered">Registered</option>
-<option value="Not Registered">Not Registered</option>
+<option>Registered</option>
+<option>Not Registered</option>
 </select>
 
 <!-- REGISTRATION CITY -->
 <select name="registration_city" id="registration_city" required>
-<option value="">Select Registration City</option>
-
 <option>Hyderabad</option>
-<option>Chennai</option>
-<option>Bangalore</option>
-<option>Mumbai</option>
 <option>Delhi</option>
-<option>Kolkata</option>
-<option>Pune</option>
-<option>Ahmedabad</option>
-<option>Jaipur</option>
-<option>Lucknow</option>
-<option>Indore</option>
-<option>Surat</option>
-<option>Visakhapatnam</option>
-<option>Vijayawada</option>
-<option>Coimbatore</option>
+<option>Mumbai</option>
+<option>Bangalore</option>
+<option>Chennai</option>
 <option>Other</option>
-
 </select>
 
 <button type="submit">Predict Price 🚀</button>
 
 </form>
 
-<!-- RESULT SECTION (PRICE IN RUPEES ₹) -->
+<!-- RESULT BOX -->
 {% if prediction_text %}
 <div class="result">
-    💰 {{ prediction_text }} ₹
+    {{ prediction_text }}
 </div>
 {% endif %}
 
 </div>
 
-<!-- JS LOGIC -->
 <script>
 function toggleCity(){
 
     let assembly = document.getElementById("assembly").value;
-    let regType = document.getElementById("registration_type").value;
+    let reg = document.getElementById("registration_type").value;
     let city = document.getElementById("registration_city");
 
-    if(assembly === "Imported" || regType === "Not Registered"){
-        city.value = "";
+    if(assembly === "Imported" || reg === "Not Registered"){
         city.disabled = true;
-        city.style.opacity = "0.5";
+        city.value = "";
     } else {
         city.disabled = false;
-        city.style.opacity = "1";
     }
 }
 </script>
