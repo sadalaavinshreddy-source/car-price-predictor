@@ -13,7 +13,7 @@
 <div class="container">
 
 <h1>🚗 AI Car Price Predictor</h1>
-<p>Smart ML-based prediction system</p>
+<p>Smart Machine Learning Based Prediction System</p>
 
 <form action="/predict" method="POST">
 
@@ -26,9 +26,9 @@
 <!-- Ad ID -->
 <input type="text" name="ad_id" pattern="[0-9]{10}" maxlength="10" placeholder="10 Digit Ad ID" required>
 
-<!-- Year -->
+<!-- Model Year -->
 <select name="year" required>
-<option value="">Select Year</option>
+<option value="">Model Year</option>
 {% for y in range(2026, 1990, -1) %}
 <option value="{{ y }}">{{ y }}</option>
 {% endfor %}
@@ -46,7 +46,7 @@
 
 <!-- Documents -->
 <select name="documents" required>
-<option value="">Documents</option>
+<option value="">Car Documents</option>
 <option value="Original">Original</option>
 <option value="Not Original">Not Original</option>
 </select>
@@ -72,7 +72,7 @@
 <option value="Not Used">Not Used</option>
 </select>
 
-<!-- Registration Type (NEW ADDED) -->
+<!-- Registration Type -->
 <select name="registration_type" id="registration_type" onchange="toggleCity()" required>
 <option value="">Registration Type</option>
 <option value="Registered">Registered</option>
@@ -108,7 +108,6 @@
 
 </div>
 
-<!-- JS LOGIC (ONLY ADDITION) -->
 <script>
 function toggleCity(){
 
