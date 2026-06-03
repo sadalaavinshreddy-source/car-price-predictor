@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Price Predictor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Price Predictor AI</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
 <div class="container">
 
-    <h1>🚗 Car Price Predictor</h1>
-    <p>Predict your car's market value using AI</p>
+    <h1>🚗 AI Car Price Predictor</h1>
+    <p>Enter car details to predict price</p>
 
-    <form action="/predict" method="POST">
+    <form action="/predict" method="POST" onsubmit="showLoader()">
 
-        <input type="number" name="ad_id" placeholder="Ad ID" required>
+        <input type="text" name="ad_id"
+               placeholder="Enter 10 Digit Ad ID"
+               pattern="[0-9]{10}" maxlength="10" required>
 
         <input type="text" name="car_name" placeholder="Car Name" required>
 
-        <input type="text" name="make" placeholder="Make" required>
-
         <input type="text" name="model" placeholder="Model" required>
 
-        <input type="number" name="year" placeholder="Year" required>
+        <!-- Year Dropdown -->
+        <select name="year" required>
+            <option value="">Select Year</option>
+            {% for y in range(2025, 1999, -1) %}
+                <option value="{{ y }}">{{ y }}</option>
+            {% endfor %}
+        </select>
 
         <input type="number" name="kms" placeholder="KM Driven" required>
 
@@ -32,27 +39,51 @@
 
         <input type="text" name="registration_city" placeholder="Registration City" required>
 
-        <input type="text" name="documents" placeholder="Car Documents" required>
+        <!-- Documents -->
+        <select name="documents" required>
+            <option value="">Car Documents</option>
+            <option>Original</option>
+            <option>Not Original</option>
+        </select>
 
-        <input type="text" name="assembly" placeholder="Assembly" required>
+        <!-- Assembly -->
+        <select name="assembly" required>
+            <option value="">Assembly</option>
+            <option>Imported</option>
+            <option>Local</option>
+        </select>
 
         <input type="text" name="transmission" placeholder="Transmission" required>
 
-        <input type="text" name="condition" placeholder="Condition" required>
+        <!-- Condition -->
+        <select name="condition" required>
+            <option value="">Condition</option>
+            <option>Used</option>
+            <option>New</option>
+        </select>
 
         <input type="text" name="seller_location" placeholder="Seller Location" required>
 
-        <button type="submit">Predict Price</button>
+        <button type="submit">Predict Price 🚀</button>
 
     </form>
 
+    <!-- Loader -->
+    <div id="loader" class="loader"></div>
+
     {% if prediction %}
     <div class="result">
-        Predicted Price: ₹ {{ prediction }}
+        💰 Predicted Price: ₹ {{ prediction }}
     </div>
     {% endif %}
 
 </div>
+
+<script>
+function showLoader(){
+    document.getElementById("loader").style.display = "block";
+}
+</script>
 
 </body>
 </html>

@@ -4,12 +4,13 @@ import joblib
 
 app = Flask(__name__)
 
-# Load Model
+# load model
 model = joblib.load("car_price_model.pkl")
 
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -17,7 +18,6 @@ def predict():
     data = {
         'Ad ID': [int(request.form['ad_id'])],
         'Car Name': [request.form['car_name']],
-        'Make': [request.form['make']],
         'Model': [request.form['model']],
         'Year': [int(request.form['year'])],
         "KM's driven": [int(request.form['kms'])],
@@ -34,12 +34,9 @@ def predict():
 
     prediction = model.predict(input_df)
 
-    predicted_price = round(float(prediction[0]), 2)
+    return render_template('index.html',
+                           prediction=round(float(prediction[0]), 2))
 
-    return render_template(
-        'index.html',
-        prediction=predicted_price
-    )
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
