@@ -17,10 +17,9 @@
 
 <form action="/predict" method="POST">
 
-<!-- COMPANY NAME (FULL LIST) -->
+<!-- COMPANY NAME -->
 <select name="car_name" required>
     <option value="">Company Name</option>
-
     <option>Toyota</option>
     <option>Honda</option>
     <option>Hyundai</option>
@@ -136,8 +135,16 @@
 
 </form>
 
+<!-- RESULT SECTION (PRICE IN RUPEES ₹) -->
+{% if prediction_text %}
+<div class="result">
+    💰 {{ prediction_text }} ₹
+</div>
+{% endif %}
+
 </div>
 
+<!-- JS LOGIC -->
 <script>
 function toggleCity(){
 
