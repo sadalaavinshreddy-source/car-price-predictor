@@ -17,16 +17,42 @@
 
 <form action="/predict" method="POST">
 
-<!-- Company Name -->
-<input type="text" name="car_name" placeholder="Company Name (Make)" required>
+<!-- COMPANY NAME (UPDATED DROPDOWN) -->
+<select name="car_name" required>
+    <option value="">Company Name</option>
+    <option>Toyota</option>
+    <option>Honda</option>
+    <option>Hyundai</option>
+    <option>Maruti Suzuki</option>
+    <option>Tata</option>
+    <option>Mahindra</option>
+    <option>Ford</option>
+    <option>Chevrolet</option>
+    <option>Nissan</option>
+    <option>Renault</option>
+    <option>Kia</option>
+    <option>Volkswagen</option>
+    <option>Skoda</option>
+    <option>BMW</option>
+    <option>Mercedes-Benz</option>
+    <option>Audi</option>
+    <option>MG</option>
+    <option>Jeep</option>
+    <option>Volvo</option>
+    <option>Fiat</option>
+    <option>Land Rover</option>
+    <option>Lexus</option>
+    <option>Jaguar</option>
+    <option>Other</option>
+</select>
 
-<!-- Model -->
+<!-- MODEL -->
 <input type="text" name="model" placeholder="Car Model" required>
 
-<!-- Ad ID -->
+<!-- AD ID -->
 <input type="text" name="ad_id" pattern="[0-9]{10}" maxlength="10" placeholder="10 Digit Ad ID" required>
 
-<!-- Model Year (CHANGED HERE ONLY) -->
+<!-- MODEL YEAR -->
 <select name="year" required>
 <option value="">Model Year</option>
 {% for y in range(2026, 1990, -1) %}
@@ -34,52 +60,52 @@
 {% endfor %}
 </select>
 
-<!-- KM Driven -->
+<!-- KM DRIVEN -->
 <input type="number" name="kms" placeholder="KM Driven" required>
 
-<!-- Fuel -->
+<!-- FUEL -->
 <select name="fuel" required>
 <option value="">Fuel Type</option>
 <option value="Petrol">Petrol</option>
 <option value="Diesel">Diesel</option>
 </select>
 
-<!-- Documents -->
+<!-- DOCUMENTS -->
 <select name="documents" required>
 <option value="">Car Documents</option>
 <option value="Original">Original</option>
 <option value="Not Original">Not Original</option>
 </select>
 
-<!-- Assembly -->
+<!-- ASSEMBLY -->
 <select name="assembly" id="assembly" onchange="toggleCity()" required>
 <option value="">Assembly</option>
 <option value="Local">Local</option>
 <option value="Imported">Imported</option>
 </select>
 
-<!-- Transmission -->
+<!-- TRANSMISSION -->
 <select name="transmission" required>
 <option value="">Transmission</option>
 <option value="Manual">Manual</option>
 <option value="Automatic">Automatic</option>
 </select>
 
-<!-- Condition -->
+<!-- CONDITION -->
 <select name="condition" required>
 <option value="">Condition</option>
 <option value="Used">Used</option>
 <option value="Not Used">Not Used</option>
 </select>
 
-<!-- Registration Type -->
+<!-- REGISTRATION TYPE -->
 <select name="registration_type" id="registration_type" onchange="toggleCity()" required>
 <option value="">Registration Type</option>
 <option value="Registered">Registered</option>
 <option value="Not Registered">Not Registered</option>
 </select>
 
-<!-- Registration City -->
+<!-- REGISTRATION CITY -->
 <select name="registration_city" id="registration_city" required>
 <option value="">Select Registration City</option>
 
@@ -108,6 +134,7 @@
 
 </div>
 
+<!-- JS LOGIC -->
 <script>
 function toggleCity(){
 
